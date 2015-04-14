@@ -15,6 +15,8 @@ QF.prototype.connected = function (p, q) {
 QF.prototype.union = function (p, q) {
     var arr = this.arr, pid = arr[p], qid = arr[q];
 
+    if (this.connected(p, q)) return this;
+
     for (var i = 0; i < arr.length; i++) {
         if (arr[i] === pid) (arr[i] = qid) // Order of growth === N
     }
