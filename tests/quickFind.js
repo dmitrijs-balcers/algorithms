@@ -24,25 +24,23 @@ QF.prototype.union = function (p, q) {
 };
 
 
-describe("Union Find", function () {
-    describe("quickFind", function () {
-        it("should connect two paths", function () {
-            var uf = new QF([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-            uf.union(1, 2);
+describe("Quick Find", function () {
+    it("should connect two paths", function () {
+        var uf = new QF([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        uf.union(1, 2);
 
-            expect(uf.arr).to.eql([0, 2, 2, 3, 4, 5, 6, 7, 8, 9]);
-        });
-        it("should find connection between two paths", function () {
-            var uf = new QF([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        expect(uf.arr).to.eql([0, 2, 2, 3, 4, 5, 6, 7, 8, 9]);
+    });
+    it("should find connection between two paths", function () {
+        var uf = new QF([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-            expect(uf.union(1, 2).connected(1, 2)).to.be.true;
-        });
+        expect(uf.union(1, 2).connected(1, 2)).to.be.true;
+    });
 
-        it("should connect three paths", function () {
-            var uf = new QF([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-            uf.union(1, 2).union(2, 3);
+    it("should connect three paths", function () {
+        var uf = new QF([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        uf.union(1, 2).union(2, 3);
 
-            expect(uf.arr).to.eql([0, 3, 3, 3, 4, 5, 6, 7, 8, 9]);
-        });
+        expect(uf.arr).to.eql([0, 3, 3, 3, 4, 5, 6, 7, 8, 9]);
     });
 });
