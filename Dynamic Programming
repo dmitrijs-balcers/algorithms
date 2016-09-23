@@ -1,0 +1,47 @@
+https://www.youtube.com/watch?v=ENyox7kNKeY
+
+*Dynamic programming notes*
+
+// naive rec alg
+function fibNaive(n) { 
+  // O = teta
+  // exponential T(n) = T(n-1) + T(n -2) + O(1)
+  // T(n) >= 2T(n - 2) = O(2 ^ (n/2))
+  if (memo[n]) return memo[n];
+  return fibNaive(n - 1) + fibNaive(n - 2);
+}
+
+let memo = {};
+function fibMemo(n) {
+  if (n <= 2) return 1;
+  if (memo[n]) return memo[n];
+  const res = fibMemo(n - 1) + fibMemo(n - 2);
+  memo[n] = res;
+  return res;
+}
+
+// Can save momory, by removing redundant elements.
+// I just need two last entries to compute next one
+function fibBotUp(n) {
+  const fib = [];
+  for (var k = 1; k < n + 1; k++) {
+    var f = 1;
+    if (k > 2) (f = fib[k - 1] + fib[k - 2]);
+    console.log(fib.toString())
+    fib[k] = f;
+  }
+  return fib[n];
+}
+
+console.log(fibBotUp(10));
+
+// Don't know the answer? guess ... trye *all* guesses (& take the best)
+// s -> o -> o -> o -> o -> o -> v
+
+//  5 "easy" steps to DP
+//  
+//  1. define subproblems
+//  2. guess (part of solution)
+//  3. relate subproblem solutions (recurrance)
+//  4. recurse and memorize or buiild DP table (bottom-up)
+//  5. solve original problem
